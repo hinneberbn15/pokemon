@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+    <title>Pokemon</title>
+    <link rel="stylesheet" type="text/css" href="./style/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript">
+
+      function getPics(){
+          for (var i = 1; i < 152; i++){
+            $( "#pokepic" ).append( "<img src='http://pokeapi.co/media/img/" + i +  ".png'>");
+          }
+      }
+
+      $(document).ready(function(){
+      
+        getPics();
+
+      });
+
+    </script>
+   </head>
+   <body>
+      <div id="wrapper">
+        <div id="pokepic">
+          <h1>Assignment: Pokemon</h1><br>
+        </div>
+      </div>
+   </body>
+</html>
