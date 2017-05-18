@@ -1,10 +1,12 @@
 
 
  $(document).ready(function() {
-
+    
     //add in code to create dropdown for autocomplete
     
-
+     // this triggers the connection event in our server!
+     var socket = io.connect();
+     // we'll write all the socket stuff after the above line!
 
     $('form').submit(function(){
         console.log($(this).serialize());
