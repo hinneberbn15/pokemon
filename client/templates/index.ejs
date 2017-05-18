@@ -2,17 +2,29 @@
 <html lang="en">
 
 <head>
-    <title>What's the Pokemon</title>
+    <title>Pokemon</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript" src="/js/pokemon.js"></script>
     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
-    <script src="/js/pokemon.js"></script>
+<<<<<<< HEAD
+
+>>>>>>> 75828234864bb3a2129a23c059d0efee72408555
 </head>
 
 <body>
     <div id="wrapper">
-        <div id="pokepic">
-            <h1>Assignment: What's that Pokemon? Build Your Own Pokedex</h1><br>
+        <div id="pokeHeader">
+            <h1>Pokemon App</h1><br>
+        </div>
+        <div id="formPokedex">
+            <form align="left">
+                <label>Which Pokemon do you want to know about?</label>
+                <input type="text" list="languages">
+                    <datalist id="languages">
+                    </datalist>
+                <input id="submitbut" type="submit" value="Submit">
+            </form>
         </div>
         <div id="emptyPokedex">
         </div>

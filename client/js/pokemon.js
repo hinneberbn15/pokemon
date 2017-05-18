@@ -1,30 +1,28 @@
- function getPics() {
-     for (var i = 1; i < 152; i++) {
-         $("#pokepic").append("<img id='" + i + "' src='http://pokeapi.co/media/img/" + i + ".png'>");
-     }
- }
+
 
  $(document).ready(function() {
-
+    
+    //add in code to create dropdown for autocomplete
+    
      // this triggers the connection event in our server!
      var socket = io.connect();
      // we'll write all the socket stuff after the above line!
 
-     getPics();
+    $('form').submit(function(){
+        console.log($(this).serialize());
+        var pokeName = $(this).serialize();
 
-     $('img').click(function() {
+        console.log(pokeName);
+
+        var id = pokemon.getId(pokeName);
 
          $("#emptyPokedex").html("");
 
-         console.log(this.id);
+         console.log(id);
 
-         var picnum = this.id;
 
-         $.get("http://pokeapi.co/api/v1/pokemon/" + this.id + "/", function(res) {
+         $.get("http://pokeapi.co/api/v1/pokemon/" + id + "/", function(res) {
              $("#emptyPokedex").append("<h2>" + res.name + "</h2>");
-
-             console.log(this);
-             $("#emptyPokedex").append("<img id='" + picnum + "' src='http://pokeapi.co/media/img/" + picnum + ".png'>");
 
              var html_str = "";
              html_str += "<h4>Types</h4>";
