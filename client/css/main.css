@@ -1,0 +1,42 @@
+/*CSS reset settings here*/
+*{
+ /*outline: thin dotted red;*/
+}
+
+#wrapper{
+ width: 1000px;
+}
+
+#pokepic{
+	width: 750px;
+	display: inline-block;
+}
+
+#emptyPokedex{
+	height: 500px;
+	width: 200px;
+	border: thick solid red;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 25px;
+	margin-left: 25px;
+	padding-left: 5px;
+}
+
+h2{
+	text-align: center;
+}
+
+ul{
+	margin: 0px;
+}
+
+
+
+
+
+
+
+
+
+
