@@ -21,4 +21,23 @@ var io = require('socket.io').listen(server);
 io.on('connection', function(socket) {
     console.log("We are using socket!");
     console.log(socket.id);
+
+    socket.on("searchKey", function (data){
+        var pokemonList = pokemon.all();
+        var pokemonObjects = [{id: null, name: null}];
+        var searchResults = [];
+        for(let i=0; i<pokemonList.length;i++){
+            if(pokemonList[i].startsWith(data.name)){
+                searchResults.push({
+                    id: pokemon.getId(pokemonList[i]),
+                    name: pokemonList[i],
+                });
+            }
+        }
+        console.log(searchResults);
+
+        console.log('Someone clicked a button!  Reason: ' + data.name);
+        socket.emit('searchResults', {response: searchResults});
+    })
 });
+
