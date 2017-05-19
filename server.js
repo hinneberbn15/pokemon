@@ -27,7 +27,7 @@ io.on('connection', function(socket) {
         var pokemonObjects = [{id: null, name: null}];
         var searchResults = [];
         for(let i=0; i<pokemonList.length;i++){
-            if(pokemonList[i].startsWith(data.name)){
+            if(pokemonList[i].toLowerCase().startsWith(data.name.toLowerCase())){
                 searchResults.push({
                     id: pokemon.getId(pokemonList[i]),
                     name: pokemonList[i],

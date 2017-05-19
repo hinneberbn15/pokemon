@@ -1,33 +1,50 @@
 /*CSS reset settings here*/
 *{
  /*outline: thin dotted red;*/
+	margin: 0 0;
+	padding: 0 0;
+}
+
+input{
+	margin-left: 10px;
+
+	height:20px;
 }
 
 #wrapper{
- width: 1000px;
+ 	width: 1000px;
+	margin:auto auto;
+	background-color: #dddfe2;
+	height: 100%;
 }
 
 #pokeHeader{
 	display: block;
+	margin:auto auto;
+	text-align: center;
+}
+#formPokedex{
+	text-align: center;
+	margin:auto auto;
+	margin-bottom: 20px;
 }
 
 #emptyPokedex{
-	height: 500px;
-	border: thick solid red;
+	height: 350px;
+	width: 200px;
+	border: thick solid gray;
 	display: block;
 	margin-top: 15px;
+	margin: auto auto;
+	text-align: center;
 }
 
 h2{
 	text-align: center;
 }
 
-ul{
-	margin: 0px;
-}
-
 #submitbut{
-	background-color: gray
+	background-color: gray;
 	border: thin solid black;
 	width: 75px;
 	box-shadow: 2px 2px gray;

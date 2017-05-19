@@ -8,7 +8,8 @@
      var socket = io.connect();
      // we'll write all the socket stuff after the above line!
 
-     $('#searchInput').keyup(function () {
+
+     $('#searchInput').bind("input",function () {
          var searchString = $('#searchInput').val();
          if (searchString.length > 1) {
              socket.emit("searchKey", {name: searchString});
@@ -19,41 +20,42 @@
          console.log('The server says: ' + data.response);
 
          var listHTML;
-         for (let i = 0; i < data.response.length; i++) {
-             listHTML += `<option value=${data.response[i].name}>`;
+
+         if(data.response.length!=1) {
+             $("#emptyPokedex").html("");
+             for (let i = 0; i < data.response.length; i++) {
+                 listHTML += `<option value=${data.response[i].name}>`;
+             }
+             $('#searchOptions').html(listHTML);
+         }else{
+             fillPokemonInfo(data.response[0].id);
          }
-
-         $('#searchOptions').html(listHTML);
-
-
      });
 
-     function fillPokemonInfo() {
+     function fillPokemonInfo(id) {
 
          $("#emptyPokedex").html("");
 
          console.log(id);
 
-
          $.get("http://pokeapi.co/api/v1/pokemon/" + id + "/", function (res) {
              $("#emptyPokedex").append("<h2>" + res.name + "</h2>");
 
              var html_str = "";
+             html_str += `<img src="/img/pokemon/${id}.png" alt="${res.name}">`
              html_str += "<h4>Types</h4>";
-             html_str += "<ul>";
              for (var i = 0; i < res.types.length; i++) {
-                 html_str += "<li>" + res.types[i].name + "</li>";
+                 html_str += "<p>" + res.types[i].name + "</p>";
              }
-             html_str += "</ul>";
              $("#emptyPokedex").append(html_str);
 
-             html_str = "";
+             html_str = "<br>";
              html_str += "<h4>Height</h4>";
              html_str += res.height;
              $("#emptyPokedex").append(html_str);
 
 
-             html_str = "";
+             html_str = "<br><br>";
              html_str += "<h4>Weight</h4>";
              html_str += res.weight;
              $("#emptyPokedex").append(html_str);
