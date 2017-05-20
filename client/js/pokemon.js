@@ -13,14 +13,17 @@
          var searchString = $('#searchInput').val();
          if (searchString.length > 1) {
              socket.emit("searchKey", {name: searchString});
+             //every time user enters a key, send an event "searchKey" to the server along with what the user has typed so far.
+             //the server will use the data to see if there are matches.
          }
      });
 
+     //socket performs the function when it receives the searchResults event back from the server
      socket.on('searchResults', function (data) {
          console.log('The server says: ' + data.response);
 
          var listHTML;
-
+         //builds the updated option list based on the array of pokemon objects received from the server.
          if(data.response.length!=1) {
              $("#emptyPokedex").html("");
              for (let i = 0; i < data.response.length; i++) {
@@ -28,10 +31,14 @@
              }
              $('#searchOptions').html(listHTML);
          }else{
+
+             //fills the pokemon information via the pokemon api if the result is now down to one, passes in the ID
              fillPokemonInfo(data.response[0].id);
          }
      });
 
+
+     //function to populate the details of a pokemon given an ID.
      function fillPokemonInfo(id) {
 
          $("#emptyPokedex").html("");
